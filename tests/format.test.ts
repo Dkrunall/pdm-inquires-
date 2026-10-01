@@ -39,6 +39,7 @@ describe("field matching", () => {
     ["WhatsApp No", "phone"],
     ["Message/Inquiry", "message"],
     ["Enquiry", "message"],
+    ["Field", "message"],
     ["Full Name", "name"],
     ["Guests", null],
   ] as const)("%s → %s", (key, expected) => {
@@ -161,5 +162,23 @@ describe("buildMessage", () => {
     expect(html).toContain("New Enquiry — Website");
     expect(html).toContain("📞 <b>Phone:</b> 123");
     expect(html).not.toContain("WhatsApp");
+  });
+});
+
+describe("Peninsula site form", () => {
+  it("maps the real Webflow field names", () => {
+    const { known, extra } = matchFields({
+      Name: "Asha",
+      "Email id": "asha@example.com",
+      "Phone number": "9876543210",
+      Field: "Room for two adults",
+    });
+    expect(known).toEqual({
+      name: "Asha",
+      email: "asha@example.com",
+      phone: "9876543210",
+      message: "Room for two adults",
+    });
+    expect(extra).toEqual([]);
   });
 });

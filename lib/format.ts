@@ -10,7 +10,8 @@
 export const FIELD_RULES = [
   { type: "email", keywords: ["email", "mail"] },
   { type: "phone", keywords: ["phone", "mobile", "contact", "whatsapp"] },
-  { type: "message", keywords: ["message", "inquiry", "enquiry", "note", "comment"] },
+  // "field": the Peninsula site's message textarea is named "Field" in the Designer.
+  { type: "message", keywords: ["message", "inquiry", "enquiry", "note", "comment", "field"] },
   { type: "name", keywords: ["name"] },
 ] as const;
 
