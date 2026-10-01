@@ -181,4 +181,10 @@ describe("Peninsula site form", () => {
     });
     expect(extra).toEqual([]);
   });
+
+  it("shows \"Email Form\" as \"Enquiry Form\"", () => {
+    const html = buildMessage({ formName: "Email Form", data: { Name: "Asha" } });
+    expect(html).toContain("New Enquiry — Enquiry Form");
+    expect(html).not.toContain("Email Form");
+  });
 });

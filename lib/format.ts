@@ -15,6 +15,12 @@ export const FIELD_RULES = [
   { type: "name", keywords: ["name"] },
 ] as const;
 
+// Display names for forms, keyed by the name Webflow sends. The Peninsula
+// site's forms publish as "Email Form" even after renaming in the Designer.
+export const FORM_NAME_ALIASES: Readonly<Record<string, string>> = {
+  "Email Form": "Enquiry Form",
+};
+
 export const MAX_FIELD_LENGTH = 500;
 export const DEFAULT_FORM_NAME = "Website";
 
@@ -146,7 +152,8 @@ function text(value: string): string {
 }
 
 export function buildMessage(input: EnquiryInput): string {
-  const formName = valueToText(input.formName) ?? DEFAULT_FORM_NAME;
+  const rawFormName = valueToText(input.formName) ?? DEFAULT_FORM_NAME;
+  const formName = FORM_NAME_ALIASES[rawFormName] ?? rawFormName;
   const { known, extra } = matchFields(input.data);
 
   const fieldLines: string[] = [];
