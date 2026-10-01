@@ -19,7 +19,7 @@ Enquiries go to private chats with the bot, not a group.
 
 1. Each person who should receive enquiries opens the bot in Telegram and presses **Start**. A bot can't message someone who hasn't started it.
 2. Get their IDs: open `https://api.telegram.org/bot<TOKEN>/getUpdates` **before step 7** and copy each `"chat":{"id":...}` (a positive number). After step 7, anyone can just send `/id` to the bot.
-3. Put the IDs in `TG_CHAT_ID`, separated by commas: `381264389,123456789`.
+3. Put the IDs in `TG_CHAT_ID`, separated by commas: `111111111,222222222`.
 4. Optional: in BotFather, go to `/mybots` → your bot → **Bot Settings → Allow Groups? → Turn off** so nobody can add the bot to a group.
 
 ## 3. Deploy to Vercel
